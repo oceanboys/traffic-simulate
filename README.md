@@ -2,51 +2,6 @@
 
 这是一个基于Vue 3 + Go + MySQL的智慧交通实时数据平台，提供实时交通监控、路段管理、GPS数据管理和告警管理功能。
 
-## 技术栈
-
-### 后端
-- Go 1.21+
-- Beego 2.x 框架
-- MySQL 数据库
-- ORM 数据访问层
-
-### 前端
-- Vue 3 + TypeScript
-- Element Plus UI组件库
-- Vue Router 路由管理
-- Axios HTTP客户端
-
-## 功能特性
-
-### 实时监控
-- 在线车辆统计
-- 超速告警统计
-- 拥堵路段统计
-- 平均速度统计
-- 实时地图显示（待集成）
-- 实时告警列表
-- 路段状态监控
-
-### 路段管理
-- 路段信息的增删改查
-- 路段类型分类（高速公路、城市道路、乡村道路）
-- 路段坐标信息管理
-- 限速和容量设置
-
-### GPS数据管理
-- GPS数据的录入和查询
-- 车辆轨迹追踪
-- 速度监控
-- 车型分类管理
-- 时间范围筛选
-
-### 告警管理
-- 超速告警
-- 拥堵告警
-- 事故告警
-- 告警严重程度分级
-- 告警处理状态管理
-
 ## 快速开始
 
 ### 环境要求
@@ -56,24 +11,11 @@
 
 ### 数据库配置
 1. 创建MySQL数据库：
-`sql
-CREATE DATABASE traffic_insights CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-`
 
-2. 修改后端配置文件 ackend/conf/app.conf：
-`ini
-# mysql数据库信息
-db.driver = mysql
-db.host = localhost
-db.port = 3306
-db.user = root
-db.password = "your_password"
-db.name = traffic_insights
-db.prefix =
-`
+2. 修改后端配置文件 backend/conf/app.conf：
 
 ### 启动后端服务
-`ash
+`bash
 cd backend
 go mod tidy
 go build -o backend.exe
@@ -83,7 +25,7 @@ go build -o backend.exe
 后端服务将在 http://localhost:8080 启动
 
 ### 启动前端服务
-`ash
+`bash
 cd frontend
 npm install
 npm run dev
@@ -110,7 +52,7 @@ npm run dev
 
 ## 项目结构
 
-`
+
 traffic-insights/
  backend/                 # 后端Go代码
     algorithms/         # 算法模块
@@ -130,12 +72,12 @@ traffic-insights/
        types/         # 类型定义
     public/            # 静态资源
  README.md
-`
+
 
 ## 开发说明
 
 ### 后端开发
-- 使用Beego框架的MVC架构
+- 使用Beego框架架构
 - 数据库操作使用ORM
 - 支持自动建表（开发环境）
 - 支持CORS跨域请求
@@ -146,16 +88,6 @@ traffic-insights/
 - Element Plus组件库
 - 响应式设计
 
-## 部署说明
 
-### 生产环境配置
-1. 修改 ackend/conf/app.conf 中的数据库配置
-2. 设置 unmode = prod
-3. 编译后端：go build -o backend
-4. 构建前端：
-pm run build
-5. 部署到服务器
 
-## 许可证
 
-MIT License
