@@ -3,16 +3,16 @@
     <el-card class="control-panel" shadow="hover">
       <template #header>
         <div class="card-header">
-          <span>交通流模拟控制</span>
+          <span>模拟控制</span>
           <el-tag :type="isSimulating ? 'success' : 'info'" size="large">
             {{ isSimulating ? '模拟运行中' : '模拟已停止' }}
           </el-tag>
         </div>
       </template>
-      
+
       <div class="controls">
-        <el-button 
-          :type="isSimulating ? 'danger' : 'success'" 
+        <el-button
+          :type="isSimulating ? 'danger' : 'success'"
           @click="toggleSimulation"
           size="large"
           class="control-btn"
@@ -57,12 +57,12 @@
               </div>
             </div>
           </template>
-          
+
           <div class="map-container">
             <div class="traffic-map">
               <div class="road-segments">
-                <div 
-                  v-for="segment in roadSegments" 
+                <div
+                  v-for="segment in roadSegments"
                   :key="segment.id"
                   class="road-segment"
                   :style="getSegmentStyle(segment)"
@@ -73,10 +73,10 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="vehicles">
-                <div 
-                  v-for="vehicle in vehicles" 
+                <div
+                  v-for="vehicle in vehicles"
                   :key="vehicle.id"
                   class="vehicle"
                   :class="vehicle.status"
@@ -90,13 +90,13 @@
           </div>
         </el-card>
       </el-col>
-      
+
       <el-col :span="6">
         <el-card class="stats-card" shadow="hover">
           <template #header>
             <span>实时统计</span>
           </template>
-          
+
           <div class="stats-content">
             <div class="stat-item">
               <div class="stat-icon total">
@@ -107,7 +107,7 @@
                 <div class="stat-label">总车辆数</div>
               </div>
             </div>
-            
+
             <div class="stat-item">
               <div class="stat-icon speed">
                 <el-icon><DataLine /></el-icon>
@@ -117,7 +117,7 @@
                 <div class="stat-label">平均速度</div>
               </div>
             </div>
-            
+
             <div class="stat-item">
               <div class="stat-icon congestion">
                 <el-icon><Warning /></el-icon>
@@ -127,7 +127,7 @@
                 <div class="stat-label">拥堵程度</div>
               </div>
             </div>
-            
+
             <div class="stat-item">
               <div class="stat-icon alerts">
                 <el-icon><InfoFilled /></el-icon>
@@ -139,21 +139,21 @@
             </div>
           </div>
         </el-card>
-        
+
         <el-card class="alerts-card" shadow="hover" style="margin-top: 20px;">
           <template #header>
             <span>实时告警</span>
           </template>
-          
+
           <div class="alerts-content">
             <div v-if="alerts.length === 0" class="no-alerts">
               <el-icon size="40"><Check /></el-icon>
               <p>暂无告警</p>
             </div>
-            
+
             <div v-else class="alert-items">
-              <div 
-                v-for="alert in alerts.slice(0, 5)" 
+              <div
+                v-for="alert in alerts.slice(0, 5)"
                 :key="alert.id"
                 class="alert-item"
                 :class="'alert-' + alert.severity"
@@ -184,7 +184,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue"
 import { ElMessage } from "element-plus"
-import { 
+import {
   Location, Van, Warning, DataLine, Opportunity, Check, InfoFilled, WarningFilled,
   VideoPlay, VideoPause, Plus, Minus, Delete, Refresh
 } from "@element-plus/icons-vue"
@@ -249,7 +249,7 @@ const fetchRealTimeData = async () => {
       trafficAPI.getAlerts(),
       trafficAPI.getVehicles()
     ])
-    
+
     realTimeStats.value = trafficData
     alerts.value = alertsData || []
     vehicles.value = vehiclesData || []
@@ -265,7 +265,7 @@ const startSimulation = async () => {
     await simulationAPI.startSimulation()
     isSimulating.value = true
     ElMessage.success('模拟已开始')
-    
+
     // 开始定时更新数据
     simulationInterval = setInterval(fetchRealTimeData, 2000)
   } catch (error) {
@@ -280,7 +280,7 @@ const stopSimulation = async () => {
     await simulationAPI.stopSimulation()
     isSimulating.value = false
     ElMessage.success('模拟已停止')
-    
+
     // 清除定时器
     if (simulationInterval) {
       clearInterval(simulationInterval)
@@ -309,7 +309,7 @@ const addVehicle = async () => {
       vehicleType: 'car',
       status: 'normal'
     }
-    
+
     await trafficAPI.addVehicle(newVehicle)
     vehicleIdCounter.value++
     ElMessage.success('车辆添加成功')
@@ -326,7 +326,7 @@ const removeVehicle = async () => {
     ElMessage.warning('没有可移除的车辆')
     return
   }
-  
+
   try {
     const vehicleToRemove = vehicles.value[0]
     await trafficAPI.removeVehicle(vehicleToRemove.id)
@@ -370,7 +370,8 @@ const getSegmentStyle = (segment: RoadSegment) => {
     top: segment.y + 'px',
     width: segment.width + 'px',
     height: segment.height + 'px',
-    transform: otate(deg),
+    transform:
+otate(deg),
     backgroundColor: getCongestionColor(segment.congestionLevel)
   }
 }
@@ -380,7 +381,8 @@ const getVehicleStyle = (vehicle: Vehicle) => {
   return {
     left: vehicle.x + 'px',
     top: vehicle.y + 'px',
-    transform: otate(deg)
+    transform:
+otate(deg)
   }
 }
 
@@ -782,7 +784,7 @@ onUnmounted(() => {
   .dashboard {
     padding: 10px;
   }
-  
+
   .controls {
     justify-content: center;
   }
