@@ -154,18 +154,6 @@ import { Van, DataBoard, Location, Warning } from '@element-plus/icons-vue'
   box-shadow: 0 4px 15px rgba(64, 158, 255, 0.3);
 }
 
-.nav-item.router-link-exact-active::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 20px;
-  background: white;
-  border-radius: 2px;
-}
-
 .main-content {
   flex: 1;
   background: rgba(255, 255, 255, 0.9);
