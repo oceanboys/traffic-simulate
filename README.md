@@ -12,17 +12,7 @@
 ### 数据库配置
 1. 创建MySQL数据库：
 
-2. 修改后端配置文件 ackend/conf/app.conf：
-`ini
-# mysql数据库信息
-db.driver = mysql
-db.host = localhost
-db.port = 3306
-db.user = root
-db.password = "your_password"
-db.name = traffic_insights
-db.prefix =
-`
+2. 修改后端配置文件 backend/conf/app.conf：
 
 ### 启动后端服务
 `ash
@@ -97,5 +87,6 @@ traffic-insights/
 - TypeScript类型安全
 - Element Plus组件库
 - 响应式设计
+
 
 
