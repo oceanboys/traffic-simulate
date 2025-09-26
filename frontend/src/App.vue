@@ -4,11 +4,11 @@
       <div class="header-content">
         <div class="logo">
           <el-icon size="32"><Van /></el-icon>
-          <h1>智慧交通实时数据平台</h1>
+          <h1>交通数据模拟平台</h1>
         </div>
       </div>
     </div>
-    
+
     <div class="app-container">
       <nav class="sidebar">
         <div class="nav-menu">
@@ -30,7 +30,7 @@
           </router-link>
         </div>
       </nav>
-      
+
       <main class="main-content">
         <router-view />
       </main>
@@ -186,24 +186,24 @@ import { Van, Setting, User, DataBoard, Location, Warning } from '@element-plus/
   .app-container {
     flex-direction: column;
   }
-  
+
   .sidebar {
     width: 100%;
     margin: 0;
     border-radius: 0;
   }
-  
+
   .main-content {
     margin: 0;
     border-radius: 0;
   }
-  
+
   .nav-menu {
     flex-direction: row;
     overflow-x: auto;
     padding: 10px 20px;
   }
-  
+
   .nav-item {
     white-space: nowrap;
     min-width: 120px;
