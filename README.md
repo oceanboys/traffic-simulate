@@ -15,7 +15,7 @@
 2. 修改后端配置文件 backend/conf/app.conf：
 
 ### 启动后端服务
-`ash
+`bash
 cd backend
 go mod tidy
 go build -o backend.exe
@@ -25,7 +25,7 @@ go build -o backend.exe
 后端服务将在 http://localhost:8080 启动
 
 ### 启动前端服务
-`ash
+`bash
 cd frontend
 npm install
 npm run dev
@@ -87,6 +87,7 @@ traffic-insights/
 - TypeScript类型安全
 - Element Plus组件库
 - 响应式设计
+
 
 
 
