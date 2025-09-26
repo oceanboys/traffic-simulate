@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { Van, Setting, User, DataBoard, Location, Warning } from '@element-plus/icons-vue'
+import { Van, DataBoard, Location, Warning } from '@element-plus/icons-vue'
 </script>
 
 <style>
@@ -86,11 +86,6 @@ import { Van, Setting, User, DataBoard, Location, Warning } from '@element-plus/
   font-size: 24px;
   font-weight: 600;
   margin: 0;
-}
-
-.header-actions {
-  display: flex;
-  gap: 10px;
 }
 
 .app-container {
